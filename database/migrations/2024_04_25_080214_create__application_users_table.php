@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('application_users', function (Blueprint $table) {
-            $table->id();
-            $table->string("Cin");
-            $table->string("Nom");
-            $table->string("prenom");
-            $table->date("dateNaissance");
-            $table->string("Email");
+            $table->id("cin");
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->unique();
+            $table->string('phone_number');
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_application_users');
+        Schema::dropIfExists('application_users');
     }
 };

@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
-            $table->string("Name");
-            $table->text("Adress");
-            $table->integer("NbEtoiles");
-            $table->text("Description");
-            $table->string("Pays");
-            $table->string("Ville");
+            $table->string('name');
+            $table->string('address');
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->decimal('rating', 3, 1)->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->string('image_url')->nullable(); // Add column for image URL
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_hotels');
+        Schema::dropIfExists('hotels');
     }
 };

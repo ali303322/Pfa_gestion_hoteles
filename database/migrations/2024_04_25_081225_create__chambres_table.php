@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_chambres', function (Blueprint $table) {
+        Schema::create('chambres', function (Blueprint $table) {
             $table->id();
-            $table->integer("NChambre");
-            $table->integer("PrixNuit");
-            $table->float("PrixNuit");
-            $table->int("IdHotel");
-            $table->int("IdClient");
-            $table->foreign("IdHotel")->references('id')->on('hotels');
-            $table->foreign("IdClient")->references('id')->on('application_users');
+            $table->foreignId('hotel_id')->constrained();
+            $table->string('room_number');
+            $table->string('type');
+            $table->decimal('price', 10, 2);
+            $table->boolean('availability');
+            $table->integer('capacity');
+            $table->string('image_url'); // Define image_url column
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_chambres');
+        Schema::dropIfExists('chambres');
     }
 };
