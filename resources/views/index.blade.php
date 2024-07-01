@@ -17,37 +17,43 @@
             <p>Book Hotels, Flights and stay packages at lowest price.</p>
             </div>
             <div class="booking__container">
-            <form>
+            <form method="POST" action="{{ route('Hotel.filter') }}" id="Sform">
+                @csrf
                 <div class="form__group">
                 <div class="input__group">
-                    <input type="text" />
+                    <select name="city" id="">
+                        @foreach ($city as $c)
+                            <option value="{{ $c->city }}" >{{ $c->city }}</option>
+                        @endforeach
+                    </select>
                     <label>Location</label>
                 </div>
                 <p>Where are you going?</p>
                 </div>
                 <div class="form__group">
                 <div class="input__group">
-                    <input type="text" />
+                    <input type="date" name="dateArrive"/>
                     <label>Check In</label>
                 </div>
                 <p>Add date</p>
                 </div>
                 <div class="form__group">
                 <div class="input__group">
-                    <input type="text" />
+                    <input type="date" name="dateSort" />
                     <label>Check Out</label>
                 </div>
                 <p>Add date</p>
                 </div>
                 <div class="form__group">
                 <div class="input__group">
-                    <input type="text" />
+                    <input type="number" name="Nguest" min="0"/>
                     <label>Guests</label>
                 </div>
                 <p>Add guests</p>
                 </div>
             </form>
-            <button class="btn"><i class="ri-search-line"></i></button>
+            <button class="btn" type="submit" form="Sform"><i class="ri-search-line"></i></button>
+
             </div>
         </div>
         </header>
@@ -106,8 +112,8 @@
 
     <section class="section__container">
       <div class="reward__container">
-        <p>100+ discount codes</p>
-        <h4>Join rewards and discover amazing discounts on your booking</h4>
+        <p>Benefits from our offers</p>
+        <h4>Join VIP Team </h4>
         <button class="reward__btn">Join Rewards</button>
       </div>
     </section>

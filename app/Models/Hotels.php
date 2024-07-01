@@ -23,4 +23,14 @@ class Hotels extends Model
     {
         return $this->hasMany(Chambres::class);
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(favorites::class , 'id_hotel');
+    }
+
+    public function favoredByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
 }

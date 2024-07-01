@@ -12,9 +12,10 @@
     <title>User Dashboard</title>
   </head>
 <body>
-@include('User.navUser')
+@include('nav')
 
 @yield('userContent')
 
+@include('footer')
 </body>
 </html>

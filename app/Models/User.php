@@ -44,4 +44,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(favorites::class, 'id_user');
+    }
+
+    public function favoriteHotels()
+    {
+        return $this->belongsToMany(Hotels::class, 'favorites');
+    }
 }
